@@ -1,7 +1,20 @@
 <!DOCTYPE html>
     <head>
         <script>
-            console.log('Hello World!');
+            console.log(computerPlay());
+
+            //calculates a random number between 0 and 2 and depending on this number returns either rock, paper, or scissors
+            function computerPlay() {
+                computerMove = Math.floor(Math.random()*3);
+
+                if(computerMove == 0) {
+                    return 'rock';
+                } else if (computerMove == 1) {
+                    return 'paper';
+                } else {
+                    return 'scissors';
+                }
+            }
         </script>
     </head>
 </html>
