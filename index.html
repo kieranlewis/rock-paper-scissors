@@ -1,7 +1,8 @@
 <!DOCTYPE html>
     <head>
         <script>
-            console.log(computerPlay());
+            let computerSelection = computerPlay();
+            console.log('Computer Selection: ' + computerSelection);
 
             //calculates a random number between 0 and 2 and depending on this number returns either rock, paper, or scissors
             function computerPlay() {
@@ -14,6 +15,31 @@
                 } else {
                     return 'scissors';
                 }
+            }
+
+            //figures out who wins between the player and computer by comparing their selections
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection == 'rock') {
+                    if (computerSelection == 'paper') {
+                        return 'You Lose! Paper beats Rock';
+                    } else if (computerSelection == 'scissors') {
+                        return 'You Win! Rock beats Scissors';
+                    }
+                } else if (playerSelection == 'paper') {
+                    if (computerSelection == 'scissors') {
+                        return 'You Lose! Scissors beats Paper';
+                    } else if (computerSelection == 'rock') {
+                        return 'You Win! Paper beats Rock';
+                    }
+                } else {
+                    if (computerSelection == 'rock') {
+                        return 'You Lose! Rock beats Scissors';
+                    } else if (computerSelection == 'paper') {
+                        return 'You Win! Scissors beats Paper';
+                    }
+                }
+
+                return 'You Draw!';
             }
         </script>
     </head>
