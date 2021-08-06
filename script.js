@@ -1,4 +1,11 @@
+let computerWins = 0;
+let playerWins = 0;
+
 game();
+
+if(computerWins === 5 || playerWins === 5) {
+    console.log('Game is over');
+}
 
 function game() {
     const rockBtn = document.querySelector('#rock-btn');
@@ -16,6 +23,28 @@ function getResult(playerSelection) {
 
     const resultsDiv = document.querySelector('#div-results');
     resultsDiv.textContent = round;
+
+    if (round.substring(0,9) == 'You Lose!') {
+        computerWins++;
+        console.log(`The computer has won ${computerWins} times`);
+
+        if(computerWins === 5) {
+            console.log(`You have lost ${playerWins}-${computerWins}. Better luck next time`);
+            playerWins, computerWins = 0;
+        }
+        return 'lose';
+    } else if (round.substring(0,8) == 'You Win!') {
+        playerWins++;
+        console.log(`You have won ${playerWins} times`);
+
+        if(playerWins === 5) {
+            console.log(`You have won ${playerWins}-${computerWins}. Congratulations!`);
+            playerWins, computerWins = 0;
+        }
+        return 'win';
+    } else {
+        return 'draw';
+    }
 }
 
 //calculates a random number between 0 and 2 and depending on this number returns either rock, paper, or scissors
