@@ -2,13 +2,20 @@ game();
 
 function game() {
     const rockBtn = document.querySelector('#rock-btn');
-    rockBtn.addEventListener('click', e => console.log(e));
+    rockBtn.addEventListener('click', () => getResult('rock'));
 
     const paperBtn = document.querySelector('#paper-btn');
-    paperBtn.addEventListener('click', e => console.log(e));
+    paperBtn.addEventListener('click', () => getResult('paper'));
 
     const scissorsBtn = document.querySelector('#scissors-btn');
-    scissorsBtn.addEventListener('click', e => console.log(e));
+    scissorsBtn.addEventListener('click', () => getResult('scissors'));
+}
+
+function getResult(playerSelection) {
+    let round = playRound(playerSelection, computerPlay());
+
+    const resultsDiv = document.querySelector('#div-results');
+    resultsDiv.textContent = round;
 }
 
 //calculates a random number between 0 and 2 and depending on this number returns either rock, paper, or scissors
@@ -26,6 +33,7 @@ function computerPlay() {
 
 //figures out who wins between the player and computer by comparing their selections
 function playRound(playerSelection, computerSelection) {
+    //console.log(`You made it, you played ${playerSelection} and the computer plays ${computerSelection}`);
     if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
             return 'You Lose! Paper beats Rock';
