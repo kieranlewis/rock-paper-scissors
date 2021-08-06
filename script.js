@@ -24,22 +24,33 @@ function getResult(playerSelection) {
     const resultsDiv = document.querySelector('#div-results');
     resultsDiv.textContent = round;
 
+    const playerScore = document.querySelector('#p-score');
+    const computerScore = document.querySelector('#c-score');
+
     if (round.substring(0,9) == 'You Lose!') {
         computerWins++;
-        console.log(`The computer has won ${computerWins} times`);
+        computerScore.textContent = `Computer: ${computerWins}`;
 
         if(computerWins === 5) {
+            resultsDiv.textContent += `\r\nYou have lost ${playerWins}-${computerWins}. Better luck next time`
             console.log(`You have lost ${playerWins}-${computerWins}. Better luck next time`);
             playerWins, computerWins = 0;
+
+            computerScore.textContent = "Computer: 0";
+            playerScore.textContent = "You: 0";
         }
         return 'lose';
     } else if (round.substring(0,8) == 'You Win!') {
         playerWins++;
-        console.log(`You have won ${playerWins} times`);
+        playerScore.textContent = `You: ${playerWins}`;
 
         if(playerWins === 5) {
+            resultsDiv.textContent += `\r\nYou have won ${playerWins}-${computerWins}. Congratulations!`
             console.log(`You have won ${playerWins}-${computerWins}. Congratulations!`);
             playerWins, computerWins = 0;
+
+            computerScore.textContent = "Computer: 0";
+            playerScore.textContent = "You: 0";
         }
         return 'win';
     } else {
