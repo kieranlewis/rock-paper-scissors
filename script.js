@@ -3,10 +3,6 @@ let playerWins = 0;
 
 game();
 
-if(computerWins === 5 || playerWins === 5) {
-    console.log('Game is over');
-}
-
 function game() {
     const rockBtn = document.querySelector('#rock-btn');
     rockBtn.addEventListener('click', () => getResult('rock'));
@@ -31,26 +27,24 @@ function getResult(playerSelection) {
         computerWins++;
         computerScore.textContent = `Computer: ${computerWins}`;
 
-        if(computerWins === 5) {
+        if(computerWins >= 5) {
             resultsDiv.textContent += `\r\nYou have lost ${playerWins}-${computerWins}. Better luck next time`
-            console.log(`You have lost ${playerWins}-${computerWins}. Better luck next time`);
-            playerWins, computerWins = 0;
+            playerWins = 0; computerWins = 0;
 
-            computerScore.textContent = "Computer: 0";
-            playerScore.textContent = "You: 0";
+            computerScore.textContent = "Computer: " + computerWins;
+            playerScore.textContent = "You: " + playerWins;
         }
         return 'lose';
     } else if (round.substring(0,8) == 'You Win!') {
         playerWins++;
         playerScore.textContent = `You: ${playerWins}`;
 
-        if(playerWins === 5) {
+        if(playerWins >= 5) {
             resultsDiv.textContent += `\r\nYou have won ${playerWins}-${computerWins}. Congratulations!`
-            console.log(`You have won ${playerWins}-${computerWins}. Congratulations!`);
-            playerWins, computerWins = 0;
+            playerWins = 0; computerWins = 0;
 
-            computerScore.textContent = "Computer: 0";
-            playerScore.textContent = "You: 0";
+            computerScore.textContent = "Computer: " + computerWins;
+            playerScore.textContent = "You: " + playerWins;
         }
         return 'win';
     } else {
@@ -73,7 +67,6 @@ function computerPlay() {
 
 //figures out who wins between the player and computer by comparing their selections
 function playRound(playerSelection, computerSelection) {
-    //console.log(`You made it, you played ${playerSelection} and the computer plays ${computerSelection}`);
     if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
             return 'You Lose! Paper beats Rock';
@@ -96,32 +89,3 @@ function playRound(playerSelection, computerSelection) {
                 
     return 'You Draw!';
 }
-
-            //plays a best of 5 game and reports who wins at the end
-            /*
-            function game() {
-                let playerSelection, round;
-                let playerWins = 0;
-                let computerWins = 0;
-
-                for(i = 0; i < 5; i++) {
-                    playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
-                    round = playRound(playerSelection, computerPlay());
-                    console.log(round);
-
-                    if (round.substring(0,9) == 'You Lose!') {
-                        computerWins++;
-                    } else if (round.substring(0,8) == 'You Win!') {
-                        playerWins++;
-                    }
-                //}
-
-                console.log(`You have won ${playerWins} times; the computer has won ${computerWins} times`);
-                if (playerWins > computerWins) {
-                    console.log('You Have Won the Game! CONGRATULATIONS!');
-                } else if (computerWins > playerWins) {
-                    console.log('You Lose! Better Luck Next Time!');
-                } else {
-                    console.log('It\'s a Tie!');
-                }
-            }*/

@@ -2,21 +2,25 @@
     <head>
         <script src="script.js" defer></script>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide"
     </head>
     <body>
         <h1>Rock, Paper, Scissors</h1>
+        <div id="container">
+            <div id='div-score'>
+                <p id="p-score"><b>You:</b> 0</p>
+                <p id="c-score"><b>Computer:</b> 0</p>
+            </div>
+            <p>Select your weapon:</p>
+            <div id="div-selection">
+                <button class="btn" id="rock-btn"><img src="rock-icon-png-14.jpg"></button>
+                <button class="btn" id="paper-btn"><img src="paper.png"></button>
+                <button class="btn" id="scissors-btn"><img src="scissors.png"></button>
+            </div>
+            <div id="div-results">
 
-        <p>Select your weapon:</p>
-        <button class="btn" id="rock-btn">Rock</button>
-        <button class="btn" id="paper-btn">Paper</button>
-        <button class="btn" id="scissors-btn">Scissors</button>
-
-        <div id="div-results">
-
+            </div>
         </div>
-        <div id='div-score'>
-            <p id="p-score">You: 0</p>
-            <p id="c-score">Computer: 0</p>
-        </div>
+        
     </body>
 </html>
